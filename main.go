@@ -82,7 +82,7 @@ func main() {
 				continue
 			}
 
-			if dataJson.Service != "http" || dataJson.Service != "https" {
+			if dataJson.Service != "http" && dataJson.Service != "https" {
 
 				slog.Println(slog.DEBUG, "不是http或https", dataJson.Service, "====", dataJson)
 
