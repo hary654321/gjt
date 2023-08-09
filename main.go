@@ -107,9 +107,9 @@ func main() {
 	}
 }
 
-func HttpGet(url string) string {
+func HttpGet(url string) int {
 
-	timeout := time.Duration(5 * time.Second)
+	timeout := time.Duration(10 * time.Second)
 
 	client := http.Client{
 		Timeout: timeout,
@@ -118,11 +118,12 @@ func HttpGet(url string) string {
 
 	if err != nil {
 		slog.Println(slog.DEBUG, err)
-		return ""
+		return 0
 	}
 	defer resp.Body.Close()
 
-	return resp.Status
+	// slog.Println(slog.DEBUG, url, "status", resp.StatusCode)
+	return resp.StatusCode
 }
 
 func Screenshot(url string) {
@@ -131,8 +132,8 @@ func Screenshot(url string) {
 
 	defer atomic.AddInt32(&ScrenCount, -1)
 
-	if HttpGet(url) != "200" {
-		slog.Println(slog.DEBUG, url, "不可访问")
+	if HttpGet(url) != 200 {
+		// slog.Println(slog.DEBUG, url, "不可访问")
 		return
 	}
 
