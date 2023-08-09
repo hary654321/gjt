@@ -6,6 +6,7 @@ import (
 	"crypto/md5"
 	"encoding/hex"
 	"encoding/json"
+	"fmt"
 	"log"
 	"math"
 	"os"
@@ -42,7 +43,10 @@ const ScanLimit = 10
 var ScrenCount int32 = 0
 
 func main() {
+	log.Println("stsrt")
 	xfiles, _ := GetFiles("/u2/zrtx/log/cyberspace", "ipInfo")
+
+	fmt.Println(xfiles)
 
 	scanedFilePath := "scanedFile.txt"
 	scanDF, _ := ReadLineData(scanedFilePath)
