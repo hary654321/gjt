@@ -6,7 +6,6 @@ import (
 	"crypto/md5"
 	"encoding/hex"
 	"encoding/json"
-	"fmt"
 	"gjt/slog"
 	"log"
 	"math"
@@ -47,8 +46,6 @@ var ScrenCount int32 = 0
 func main() {
 	slog.Println(slog.DEBUG, "stsrt")
 	xfiles, _ := GetFiles("/u2/zrtx/log/cyberspace", "ipInfo")
-
-	fmt.Println(xfiles)
 
 	scanedFilePath := "scanedFile.txt"
 	scanDF, _ := ReadLineData(scanedFilePath)
