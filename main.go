@@ -84,7 +84,7 @@ func main() {
 
 			if dataJson.Service != "http" && dataJson.Service != "https" {
 
-				slog.Println(slog.DEBUG, "不是http或https", dataJson.Service, "====", dataJson)
+				// slog.Println(slog.DEBUG, "不是http或https", dataJson.Service, "====", dataJson)
 
 				continue
 			}
@@ -128,6 +128,8 @@ func Screenshot(url string) {
 		slog.Println(slog.DEBUG, url, "不可访问")
 		return
 	}
+
+	slog.Println(slog.DEBUG, url, "开始截图")
 
 	// 禁用chrome headless
 	opts := append(
