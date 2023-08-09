@@ -91,7 +91,7 @@ func main() {
 			}
 
 			if dataJson.Domain != "" {
-				go Screenshot(dataJson.Service + "://" + dataJson.Domain + ":" + dataJson.Port)
+				go Screenshot(dataJson.Service + "://" + dataJson.Domain)
 			} else {
 				go Screenshot(dataJson.Service + "://" + dataJson.IP + ":" + dataJson.Port)
 			}
