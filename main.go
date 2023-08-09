@@ -124,6 +124,7 @@ func Screenshot(url string) {
 	defer atomic.AddInt32(&ScrenCount, -1)
 
 	if HttpGet(url) != "200" {
+		slog.Println(slog.DEBUG, url, "不可访问")
 		return
 	}
 
