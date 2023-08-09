@@ -1,0 +1,1 @@
+docker run -v /u2/gjt:/app -v /u2/zrtx/log/cyberspace:/u2/zrtx/log/cyberspace -d hary654321/gjt 

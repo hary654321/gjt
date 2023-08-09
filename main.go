@@ -49,6 +49,8 @@ func main() {
 
 	for _, xfile := range xfiles {
 
+		log.Println("file", xfile)
+
 		if In_array(xfile, scanDF) {
 			log.Println("扫过file", xfile)
 			continue
