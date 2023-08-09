@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"log"
 	"math"
+	"net/http"
 	"os"
 	"path/filepath"
 	"strconv"
@@ -89,11 +90,6 @@ func main() {
 				continue
 			}
 
-			//非200  不截图
-			if !strings.Contains(dataJson.Header, "200") {
-				continue
-			}
-
 			for ScrenCount > ScanLimit {
 				time.Sleep(1 * time.Second)
 			}
@@ -112,8 +108,26 @@ func main() {
 	}
 }
 
+func HttpGet(url string) string {
+	resp, err := http.Get(url)
+	if err != nil {
+		log.Println(err)
+		return ""
+	}
+	defer resp.Body.Close()
+
+	return resp.Status
+}
+
 func Screenshot(url string) {
+
 	atomic.AddInt32(&ScrenCount, 1)
+
+	defer atomic.AddInt32(&ScrenCount, -1)
+
+	if HttpGet(url) != "200" {
+		return
+	}
 	// 禁用chrome headless
 	opts := append(
 		chromedp.DefaultExecAllocatorOptions[:],
@@ -157,7 +171,6 @@ func Screenshot(url string) {
 	path := Md5(url) + ".png"
 	WritePng(path, buf)
 
-	atomic.AddInt32(&ScrenCount, -1)
 }
 
 // 获取整个浏览器窗口的截图（全屏）
