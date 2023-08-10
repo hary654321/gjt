@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"context"
 	"crypto/md5"
+	"crypto/tls"
 	"encoding/hex"
 	"encoding/json"
 	"gjt/slog"
@@ -112,11 +113,9 @@ func main() {
 func HttpGet(url string) int {
 
 	timeout := time.Duration(10 * time.Second)
-
-	client := http.Client{
-		Timeout: timeout,
-	}
-	resp, err := client.Get(url)
+	httpTransport := &http.Transport{TLSClientConfig: &tls.Config{InsecureSkipVerify: true}}
+	httpClient := &http.Client{Transport: httpTransport, Timeout: timeout}
+	resp, err := httpClient.Get(url)
 
 	if err != nil {
 		slog.Println(slog.DEBUG, err)
