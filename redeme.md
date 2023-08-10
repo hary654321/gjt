@@ -1,1 +1,1 @@
-docker run -v /u2/gjt:/app -v /u2/cyberspace/www/data-clean/public/screen:/u2/cyberspace/www/data-clean/public/screen -v /u2/zrtx/log/cyberspace:/u2/zrtx/log/cyberspace -d hary654321/gjt 
+docker run -v /u2/gjt:/app -v /u2/cyberspace/www/data-clean/public/screen:/u2/cyberspace/www/data-clean/public/screen -v /u2/zrtx/log/cyberspace:/u2/zrtx/log/cyberspace --restart always -d hary654321/gjt 
