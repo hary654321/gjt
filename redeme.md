@@ -1,1 +1,9 @@
-docker run -v /u2/gjt:/app -v /u2/cyberspace/www/data-clean/public/screen:/u2/cyberspace/www/data-clean/public/screen -v /u2/zrtx/log/cyberspace:/u2/zrtx/log/cyberspace --restart always -d hary654321/gjt 
+# go  使用 google-chrome 进行网页截图
+
+# 安装依赖详细看Dockfile
+
+# 可以直接使用镜像测试
+
+# 效果展示
+
+![相对路径的图片](./img/baidu.png)
